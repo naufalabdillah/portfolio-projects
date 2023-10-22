@@ -1,0 +1,36 @@
+def calculate_zakat():
+    while True:
+        print("--------------------------------------")
+        print("| Selamat datang di Kalkulator Zakat |")
+        print("--------------------------------------")
+
+        try:
+            # Input penghasilan, tabungan, dan hutang pengguna
+            penghasilan = float(input("Masukkan total penghasilan (dalam rupiah): Rp. "))
+            tabungan = float(input("Masukkan total tabungan (dalam rupiah): Rp. "))
+            hutang = float(input("Masukkan total hutang (dalam rupiah): Rp. "))
+
+            # Menghitung zakat profesi (2.5% dari penghasilan)
+            zakat_profesi = 0.025 * penghasilan
+
+            # Menghitung zakat maal (2.5% dari tabungan setelah dikurangi hutang)
+            tabungan_bersih = tabungan - hutang
+            zakat_maal = 0.025 * tabungan_bersih if tabungan_bersih >= 0 else 0
+
+            print("\nHasil Perhitungan Zakat Anda adalah")
+            print(f"Zakat Profesi: Rp. {zakat_profesi:,.2f}")
+            print(f"Zakat Maal: Rp. {zakat_maal:,.2f}")
+
+        except ValueError:
+            print("\nHarap masukkan angka!\n")
+            continue
+
+        ulangi = input("\nApakah Anda ingin melakukan perhitungan zakat lagi? (y/t): ")
+        if ulangi.lower() != 'y':
+            print("--------------------------------------------------------")
+            print("| Terima kasih telah menggunakan kalkulator zakat kami |")
+            print("--------------------------------------------------------")
+            break
+
+# Memanggil fungsi untuk menghitung zakat
+calculate_zakat()
